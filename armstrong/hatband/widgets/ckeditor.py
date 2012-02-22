@@ -5,7 +5,7 @@ from django.conf import settings
 class CKEditorWidget(widgets.Textarea):
 
     class Media:
-        js = (''.join((settings.STATIC_URL, "ckeditor/ckeditor.js")),)
+        js = (''.join((settings.STATIC_URL, "ckeditor/ckeditor_source.js")),)
 
     def __init__(self, attrs=None):
         final_attrs = {'class': 'ckeditor'}
