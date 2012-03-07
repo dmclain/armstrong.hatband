@@ -1,0 +1,20 @@
+<input type="text" id="{{ id }}" name="{{ name }}" value="{{ value }}" class="vForeignKeyRawIdAdminField" />
+<a href="javascript:alert('Select a type first')" class="related-lookup" id="lookup_{{ id }}" onclick="return showRelatedObjectLookupPopup(this);">
+     <img src="{{ admin_media_prefix }}img/admin/selector-search.gif" width="16" height="16"/>
+</a>
+
+{% if not is_templated %}
+<script>
+(function ($){
+    $(window).load(function(){
+        armstrong.widgets.raw_generic_key.content_types = {
+            {% for ct in content_types %}
+            {{ ct.id }}: {app_label: '{{ ct.app_label }}', model: '{{ ct.model }}'}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        };
+        armstrong.widgets.raw_generic_key($('#{{ content_type_id }}'), $('#{{ id }}'), 
+            $('#lookup_{{ id }}'));
+    })
+})(django.jQuery);
+</script>
+{% endif %}
