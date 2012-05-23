@@ -3,16 +3,6 @@
      <img src="{{ admin_media_prefix }}img/admin/selector-search.gif" width="16" height="16"/>
 </a>
 
-{% if not is_templated %}
-<script>
-(function ($){
-    $(window).load(function(){
-        armstrong.widgets.raw_generic_key($('#{{ content_type_id }}'), $('#{{ id }}'), 
-            $('#lookup_{{ id }}'));
-    })
-})(django.jQuery);
-</script>
-{% else %}
 <script>
 (function ($){
     $(window).load(function(){
@@ -21,7 +11,10 @@
             {{ ct.id }}: {app_label: '{{ ct.app_label }}', model: '{{ ct.model }}'}{% if not forloop.last %},{% endif %}
             {% endfor %}
         };
+{% if not is_templated %}
+        armstrong.widgets.raw_generic_key($('#{{ content_type_id }}'), $('#{{ id }}'), 
+            $('#lookup_{{ id }}'));
+{% endif %}
     })
 })(django.jQuery);
 </script>
-{% endif %}

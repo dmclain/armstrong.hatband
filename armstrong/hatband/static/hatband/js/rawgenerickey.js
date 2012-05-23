@@ -8,4 +8,5 @@ armstrong.widgets.raw_generic_key = function(type_input, id_input, picker_anchor
 		var ct = armstrong.widgets.raw_generic_key.content_types[type_input.val()];
 		picker_anchor.attr('href', '/admin/' + ct.app_label + '/' + ct.model);
 	});
+	type_input.change();
 };
